@@ -10,9 +10,9 @@
             <span *ngIf="!editing">{{book?.author}}</span>
             <input #authorInput *ngIf="editing" value="{{book?.author}}">
         </div>
-        <div>
+        <div class="book-description">
             <b>Description: </b>
-            <span *ngIf="!editing">{{book?.description}}</span>
+            <span *ngIf="!editing" class="book-description-text"> {{book?.description}}</span>
             <input #descriptionInput *ngIf="editing" value="{{book?.description}}">
         </div>
         <div>
@@ -22,8 +22,9 @@
         </div>
     </div>
     <div>
-        <button (click)="onEdit()">{{editing ? 'Cancel' : 'Edit'}}</button>
-        <button (click)="onSave()" *ngIf="editing">Save</button>
-        <button (click)="onDelete()">Delete</button>
+        <button *ngIf="!editing" (click)="onEdit()"><fa-icon [icon]="faPenToSquare"></fa-icon></button>
+        <button *ngIf="editing" (click)="onEdit()"><fa-icon [icon]="faXmark"></fa-icon></button>
+        <button *ngIf="editing" (click)="onSave()"><fa-icon [icon]="faCheck"></fa-icon></button>
+        <button (click)="onDelete()"><fa-icon [icon]="faTrash"></fa-icon></button>
     </div>
 </div>

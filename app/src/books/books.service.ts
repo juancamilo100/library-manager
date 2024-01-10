@@ -8,9 +8,14 @@ import { Book } from './interfaces/book.interface'
 export class BooksService {
   constructor(@InjectModel('Book') private bookModel: Model<Book>) {}
 
-  async findAll(page: number, pageSize: number): Promise<Book[]> {
+  async findAll(page: number, pageSize: number): Promise<{count: number, books: Book[]}> {
     const skip = (page - 1) * pageSize;
-    return this.bookModel.find().skip(skip).limit(pageSize).exec();
+    const count = await this.bookModel.find().count();
+    const books = await this.bookModel.find().skip(skip).limit(pageSize).exec();
+    return {
+        books,
+        count,
+    }
   }
 
   async findOne(id: string): Promise<Book> {

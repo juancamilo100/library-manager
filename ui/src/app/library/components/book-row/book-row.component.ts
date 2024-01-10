@@ -7,6 +7,10 @@ import {
   ElementRef
 } from '@angular/core';
 import { Book } from 'src/app/services/book.model';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'book-row',
@@ -23,6 +27,10 @@ export class BookRowComponent {
   @ViewChild('descriptionInput') descriptionInput: ElementRef;
   @ViewChild('yearInput') yearInput: ElementRef;
 
+  faPenToSquare = faPenToSquare
+  faXmark = faXmark
+  faCheck = faCheck
+  faTrash = faTrash
   editing: boolean = false;
 
   onEdit() {

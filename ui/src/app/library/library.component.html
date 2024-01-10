@@ -9,11 +9,22 @@
       >
       </book-row>
     </div>
-    <div class="d-grid gap-2">
-      <button class="btn btn-primary add-button">
-        <a routerLink="/add-book" class="text-white text-decoration-none">Add Book</a>
+    <div class="pagination">
+      <button (click)="onPageDecrease()" class="btn btn-primary">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
       </button>
+      <div>
+        Page {{currentPage}} of {{totalPages}}
+      </div>
+      <button (click)="onPageIncrease()" class="btn btn-primary">
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </button>
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary add-button" [routerLink]="'/add-book'">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+
     </div>
   </div>
   <router-outlet></router-outlet>
-  
