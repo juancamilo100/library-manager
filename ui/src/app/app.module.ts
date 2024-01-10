@@ -9,13 +9,15 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibraryComponent,
     BookRowComponent,
-    AddBookComponent
+    AddBookComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

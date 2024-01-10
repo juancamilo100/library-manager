@@ -1,6 +1,6 @@
 <div class="library-container">
   <div *ngIf="!isLoggedIn()" >
-    <button class="btn btn-primary auth-button" (click)="login('some-user', 'some-password')">
+    <button class="btn btn-primary auth-button" [routerLink]="'/login'">
       Login
     </button>
   </div>
