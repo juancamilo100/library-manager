@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="book-info">
+        <div>
+            <b>Title: </b>
+            <span *ngIf="!editing">{{book?.title}}</span>
+            <input #titleInput *ngIf="editing" value="{{book?.title}}">
+        </div>
+        <div>
+            <b>Author: </b>
+            <span *ngIf="!editing">{{book?.author}}</span>
+            <input #authorInput *ngIf="editing" value="{{book?.author}}">
+        </div>
+        <div>
+            <b>Description: </b>
+            <span *ngIf="!editing">{{book?.description}}</span>
+            <input #descriptionInput *ngIf="editing" value="{{book?.description}}">
+        </div>
+        <div>
+            <b>Year: </b>
+            <span *ngIf="!editing">{{book?.year}}</span>
+            <input #yearInput *ngIf="editing" value="{{book?.year}}">
+        </div>
+    </div>
+    <div>
+        <button (click)="onEdit()">{{editing ? 'Cancel' : 'Edit'}}</button>
+        <button (click)="onSave()" *ngIf="editing">Save</button>
+        <button (click)="onDelete()">Delete</button>
+    </div>
+</div>

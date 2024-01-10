@@ -1,0 +1,19 @@
+<div class="library-container">
+    <h2>Library</h2>
+    <div class="book-list">
+      <book-row
+        *ngFor="let book of books"
+        [book]="book"
+        (saveEvent)="onSaveHandler($event)"
+        (deleteEvent)="onDeleteHandler($event)"
+      >
+      </book-row>
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary add-button">
+        <a routerLink="/add-book" class="text-white text-decoration-none">Add Book</a>
+      </button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  
