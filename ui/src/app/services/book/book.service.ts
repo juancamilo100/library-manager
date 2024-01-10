@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment as env } from '../../environments/environment';
+import { environment as env } from '../../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { Book } from './book.model';
 

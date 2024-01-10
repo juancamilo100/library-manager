@@ -1,30 +1,51 @@
 <div class="library-container">
-    <h2>Library</h2>
+  <div *ngIf="!isLoggedIn()" >
+    <button class="btn btn-primary auth-button" (click)="login('some-user', 'some-password')">
+      Login
+    </button>
+  </div>
+  <div *ngIf="isLoggedIn()">
+    <button class="btn btn-primary auth-button" (click)="logout('some-user', 'some-password')">
+      Logout
+    </button>
+  </div>
+  <h2>Library</h2>
+  <div *ngIf="books.length == 0" class="no-books">
+    <p>No books available</p>
+  </div>
+  <div *ngIf="books.length > 0">
     <div class="book-list">
       <book-row
         *ngFor="let book of books"
         [book]="book"
+        [readOnly]="!isLoggedIn()"
         (saveEvent)="onSaveHandler($event)"
         (deleteEvent)="onDeleteHandler($event)"
       >
       </book-row>
     </div>
     <div class="pagination">
-      <button [disabled]="currentPage == 1" (click)="onPageDecrease()" class="btn btn-primary">
+      <button
+        [disabled]="currentPage == 1"
+        (click)="onPageDecrease()"
+        class="btn btn-primary"
+      >
         <fa-icon [icon]="faChevronLeft"></fa-icon>
       </button>
-      <div>
-        Page {{currentPage}} of {{totalPages}}
-      </div>
-      <button [disabled]="currentPage == totalPages" (click)="onPageIncrease()" class="btn btn-primary">
+      <div>Page {{ currentPage }} of {{ totalPages }}</div>
+      <button
+        [disabled]="currentPage == totalPages"
+        (click)="onPageIncrease()"
+        class="btn btn-primary"
+      >
         <fa-icon [icon]="faChevronRight"></fa-icon>
       </button>
     </div>
-    <div class="d-grid gap-2">
-      <button class="btn btn-primary add-button" [routerLink]="'/add-book'">
-        <fa-icon [icon]="faPlus"></fa-icon>
-      </button>
-
-    </div>
   </div>
-  <router-outlet></router-outlet>
+  <div *ngIf="isLoggedIn()" class="d-grid gap-2">
+    <button class="btn btn-primary add-button" [routerLink]="'/add-book'">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { environment as env } from '../../environments/environment';
-import { BookService } from '../services/book.service';
-import { Book } from '../services/book.model';
+import { BookService } from '../services/book/book.service';
+import { Book } from '../services/book/book.model';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'library',
@@ -21,7 +22,7 @@ export class LibraryComponent {
   currentPage: number = 1;
   pageSize: number = 10;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loadBooks();
@@ -63,5 +64,18 @@ export class LibraryComponent {
   onPageDecrease() {
     this.currentPage = this.currentPage - 1;
     this.loadBooks();
+  }
+
+  login(username: string, password: string): boolean {
+    this.authService.login(username, password);
+    return false;
+  }
+
+  logout(): any {
+    this.authService.logout();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
   }
 }

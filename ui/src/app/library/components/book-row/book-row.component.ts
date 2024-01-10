@@ -6,7 +6,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import { Book } from 'src/app/services/book.model';
+import { Book } from 'src/app/services/book/book.model';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +19,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class BookRowComponent {
   @Input() book: Book;
+  @Input() readOnly: boolean = false;
   @Output() saveEvent = new EventEmitter<Book>();
   @Output() deleteEvent = new EventEmitter<{id: string}>();
 

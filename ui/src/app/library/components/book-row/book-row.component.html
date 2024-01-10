@@ -21,7 +21,7 @@
             <input #yearInput *ngIf="editing" value="{{book?.year}}">
         </div>
     </div>
-    <div>
+    <div *ngIf="!readOnly">
         <button *ngIf="!editing" (click)="onEdit()"><fa-icon [icon]="faPenToSquare"></fa-icon></button>
         <button *ngIf="editing" (click)="onEdit()"><fa-icon [icon]="faXmark"></fa-icon></button>
         <button *ngIf="editing" (click)="onSave()"><fa-icon [icon]="faCheck"></fa-icon></button>

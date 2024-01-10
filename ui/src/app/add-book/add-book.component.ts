@@ -3,8 +3,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BookService } from '../services/book.service';
-import { Book } from '../services/book.model';
+import { BookService } from '../services/book/book.service';
+import { Book } from '../services/book/book.model';
 
 @Component({
   selector: 'add-book',
@@ -29,7 +29,7 @@ export class AddBookComponent {
 
   onSubmit() {
     if (this.bookForm.valid) {
-      
+
       const newBook = {
         title: this.bookForm.value.title,
         author: this.bookForm.value.author,
