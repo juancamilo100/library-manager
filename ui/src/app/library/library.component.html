@@ -10,13 +10,13 @@
       </book-row>
     </div>
     <div class="pagination">
-      <button (click)="onPageDecrease()" class="btn btn-primary">
+      <button [disabled]="currentPage == 1" (click)="onPageDecrease()" class="btn btn-primary">
         <fa-icon [icon]="faChevronLeft"></fa-icon>
       </button>
       <div>
         Page {{currentPage}} of {{totalPages}}
       </div>
-      <button (click)="onPageIncrease()" class="btn btn-primary">
+      <button [disabled]="currentPage == totalPages" (click)="onPageIncrease()" class="btn btn-primary">
         <fa-icon [icon]="faChevronRight"></fa-icon>
       </button>
     </div>
