@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LibraryComponent } from './library/library.component';
-import { BookRowComponent } from './book-row/book-row.component';
+import { BookRowComponent } from './library/components/book-row/book-row.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
