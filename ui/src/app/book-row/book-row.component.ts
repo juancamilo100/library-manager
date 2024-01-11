@@ -21,7 +21,7 @@ export class BookRowComponent {
   @Input() book: Book;
   @Input() readOnly: boolean = false;
   @Output() saveEvent = new EventEmitter<Book>();
-  @Output() deleteEvent = new EventEmitter<{id: string}>();
+  @Output() deleteEvent = new EventEmitter<Book>();
 
   @ViewChild('titleInput') titleInput: ElementRef;
   @ViewChild('authorInput') authorInput: ElementRef;
@@ -35,7 +35,6 @@ export class BookRowComponent {
   editing: boolean = false;
 
   onEdit() {
-    console.log('Editing...');
     this.editing = !this.editing;
   }
 
@@ -44,11 +43,6 @@ export class BookRowComponent {
     const author = this.authorInput.nativeElement.value;
     const description = this.descriptionInput.nativeElement.value;
     const year = this.yearInput.nativeElement.value;
-    console.log('Saving...');
-    console.log(title);
-    console.log(author);
-    console.log(description);
-    console.log(year);
 
     const updatedBook = {
       id: this.book.id,
@@ -62,8 +56,6 @@ export class BookRowComponent {
   }
 
   onDelete() {
-    console.log('Deleting...');
-    console.log("id: ", this.book)
     this.deleteEvent.emit(this.book);
   }
 }
