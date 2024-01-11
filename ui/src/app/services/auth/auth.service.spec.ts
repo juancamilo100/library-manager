@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
@@ -9,7 +12,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AuthService]
+      providers: [AuthService],
     });
     authService = TestBed.inject(AuthService);
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -47,7 +50,7 @@ describe('AuthService', () => {
       error: (error) => {
         expect(error).toBeTruthy();
         expect(authService.isAuthenticated()).toBe(false);
-      }
+      },
     });
 
     const req = httpTestingController.expectOne(`${authService['url']}/login`);
